@@ -1,72 +1,51 @@
 import React from "react";
+import styled from "styled-components";
 
 const formDetails = [
   {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
+    id: 1,
+    name: "furntiure",
+    price: 5000,
+    category: "table",
   },
   {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
+    id: 2,
+    name: "womens tshirt",
+    price: 500,
+    category: "clothing",
   },
   {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
+    id: 3,
+    name: "iphone 12",
+    price: 900000,
+    category: "mobile",
   },
   {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
+    id: 4,
+    name: "furntiure",
+    price: 5000,
+    category: "table",
   },
   {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
-  },
-  {
-    name: "jeans",
-    price: 740,
-    category: "mens wear",
+    id: 5,
+    name: "furntiure",
+    price: 5000,
+    category: "table",
   },
 ];
+
+const Page = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+`;
+const Card = styled.div`
+  border: 5px solid black;
+  hieght: fit-content;
+  width: fit-content;
+  padding: 10px;
+  font-wight: bold;
+`;
 
 function Products() {
   fetch(`http://localhost:3001/product`, {
@@ -80,9 +59,17 @@ function Products() {
     .then((res) => console.log(res));
 
   return (
-    <>
-      <div>Products</div>
-    </>
+    <Page>
+      {formDetails.map((item) => {
+        return (
+          <Card key={item.id}>
+            <p> name: {item.name}</p>
+            <p>price: {item.price}</p>
+            <p>category: {item.category}</p>
+          </Card>
+        );
+      })}
+    </Page>
   );
 }
 
